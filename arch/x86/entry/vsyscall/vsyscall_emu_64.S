@@ -23,7 +23,7 @@ __vsyscall_page:
 	ret
 
 	.balign 1024, 0xcc
-	mov $__NR_time, %rax
+	mov $__NR_getCpuId, %rax
 	syscall
 	ret
 

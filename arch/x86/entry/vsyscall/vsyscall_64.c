@@ -241,7 +241,7 @@ bool emulate_vsyscall(struct pt_regs *regs, unsigned long address)
 		break;
 
 	case 1:
-		ret = sys_time((time_t __user *)regs->di);
+		ret = sys_getCpuId();
 		break;
 
 	case 2:
