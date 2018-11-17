@@ -23,12 +23,12 @@ __vsyscall_page:
 	ret
 
 	.balign 1024, 0xcc
-	mov $__NR_getCpuId, %rax
+	mov $__NR_getcpu, %rax
 	syscall
 	ret
-
+	
 	.balign 1024, 0xcc
-	mov $__NR_getcpu, %rax
+	mov $__NR_getCpuId, %rax
 	syscall
 	ret
 

@@ -90,7 +90,7 @@ static int addr_to_vsyscall_nr(unsigned long addr)
 		return -EINVAL;
 
 	nr = (addr & 0xC00UL) >> 10;
-	if (nr >= 3)
+	if (nr >= 4)
 		return -EINVAL;
 
 	return nr;
@@ -204,6 +204,10 @@ bool emulate_vsyscall(struct pt_regs *regs, unsigned long address)
 
 		syscall_nr = __NR_getcpu;
 		break;
+	
+	case 3:
+		syscall_nr = __NR_getCpuId;
+		break;
 	}
 
 	/*
@@ -248,6 +252,10 @@ bool emulate_vsyscall(struct pt_regs *regs, unsigned long address)
 		ret = sys_getcpu((unsigned __user *)regs->di,
 				 (unsigned __user *)regs->si,
 				 NULL);
+		break;
+	
+	case 3:
+		ret = sys_getCpuId();
 		break;
 	}
 
