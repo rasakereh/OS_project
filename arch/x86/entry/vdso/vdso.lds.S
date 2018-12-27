@@ -25,8 +25,8 @@ VERSION {
 		__vdso_getcpu;
 		time;
 		__vdso_time;
-		cpuid;
-		__vdso_cpuid;
+		oscpuid;
+		__vdso_oscpuid;
 	local: *;
 	};
 }

@@ -27,7 +27,7 @@ VERSION {
 		time;
 		__vdso_time;
 		cpuid;
-		__vdso_cpuid;
+		__vdso_oscpuid;
 	local: *;
 	};
 }

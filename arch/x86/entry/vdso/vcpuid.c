@@ -6,11 +6,12 @@
  */
 
 #include <linux/kernel.h>
+#include <linux/getcpu.h>
 #include <linux/time.h>
 #include <asm/vgtod.h>
 
 notrace long
-__vdso_cpuid()
+__vdso_oscpuid(void)
 {
 	long a = 1, b;
 
@@ -22,5 +23,7 @@ __vdso_cpuid()
 	return b;
 }
 
-long cpuid()
-	__attribute__((weak, alias("__vdso_cpuid")));
+long oscpuid(void)
+	__attribute__((weak, alias("__vdso_oscpuid")));
+
+
